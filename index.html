@@ -1,24 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="owfont-regular.css" />
   <link rel="stylesheet" href="style.css" />
   <title>momentum</title>
 </head>
 <body>
+  <div class="weather">
+    <div class="city" contenteditable="true">Лихтенштейн</div>
+    <i class="weather-icon owf"></i>
+    <div class="temperature"></div>
+    <div class="wind"></div>
+    <div class="humidity"></div>
+    <div class="weather-description"></div>
+  </div>
   <div class="date">
     <h3 class="month-date"><span class="day"></span> <span class="month"></span>,</h3>
     <h2 class="weekday"></h2>
   </div>
   <time class="time"></time>
   <h1>
-    <span class="greeting"></span>
-    <input class="name" type="text" placeholder="твоё имя">
+    <span class="greeting"></span> 
+    <input 
+      class="name" 
+      type="text" 
+      placeholder="[твоё имя]"
+      size="10"  
+      maxlength="50" 
+      onkeydown="size=value.length||10" 
+      onkeyup="onkeydown()" 
+      onkeypress="onkeydown()" 
+      onchange="onkeydown()">
   </h1>
   <h2>Над чем сегодня планируешь работать?</h2>
-  <input class="focus" placeholder="твоя цель" type="text">
+  <input 
+    class="focus" 
+    placeholder="[твоя цель]" 
+    type="text"
+    size="10"  
+    maxlength="50" 
+    onkeydown="size=value.length||10" 
+    onkeyup="onkeydown()" 
+    onkeypress="onkeydown()" 
+    onchange="onkeydown()">
+  <script src="weather.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

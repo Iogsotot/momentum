@@ -1,7 +1,7 @@
 // DOM Elements
 const time = document.querySelector('.time'),
   greeting = document.querySelector('.greeting'),
-  name = document.querySelector('.name'),
+  nameElement = document.querySelector('.name'),
   focus = document.querySelector('.focus'),
   monthHtml = document.querySelector('.month'),
   weekdayHtml = document.querySelector('.weekday'),
@@ -16,7 +16,7 @@ const showAmPm = false;
 
 // Show Time
 function showTime() {
-  let today = date,
+  let today = new Date(),
     hour = today.getHours(),
     min = today.getMinutes(),
     sec = today.getSeconds(),
@@ -24,13 +24,13 @@ function showTime() {
     weekDay = getWeekDay(),
     day = today.getDay();
 
-  // Set AM or PM
+// Set AM or PM
   const amPm = hour >= 12 ? 'PM' : 'AM';
 
-  // 12hr Format
-  // hour = hour % 12 || 12;
+// 12hr Format
+// hour = hour % 12 || 12;
 
-  // Output Time
+// Output Time
   time.innerHTML = `${addZero(hour)}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)} 
                     ${showAmPm ? amPm : ''}`;
 
@@ -48,7 +48,7 @@ function addZero(n) {
 
 // Set Background and Greeting
 function setBgGreet() {
-  let today = date,
+  let today = new Date(),
     hour = today.getHours();
 
   if (hour >= 6 && hour < 12 ) {
@@ -73,9 +73,9 @@ function setBgGreet() {
 // Get Name
 function getName() {
   if (localStorage.getItem('name') === null) {
-    name.textContent = '';
+    nameElement.value = '';
   } else {
-    name.textContent = localStorage.getItem('name');
+    nameElement.value = localStorage.getItem('name');
   }
 }
 
@@ -84,11 +84,11 @@ function setName(e) {
   if (e.type === 'keypress') {
     // Make sure enter is pressed
     if (e.which == 13 || e.keyCode == 13) {            // на всякий случай страхуем вторым условием - e.keyCode
-      localStorage.setItem('name', e.target.innerText);
-      name.blur();
+      localStorage.setItem('name', e.target.value);
+      nameElement.blur();
     }
   } else {
-    localStorage.setItem('name', e.target.innerText);
+    localStorage.setItem('name', e.target.value);
   }
 }
 
@@ -106,17 +106,17 @@ function setFocus(e) {
   if (e.type === 'keypress') {
     // Make sure enter is pressed
     if (e.which == 13 || e.keyCode == 13) {
-      localStorage.setItem('focus', e.target.innerText);
+      localStorage.setItem('focus', e.target.value);
       focus.blur();
     }
   } else {
-    localStorage.setItem('focus', e.target.innerText);
+    localStorage.setItem('focus', e.target.value);
   }
 }
 
 //Get month name
 function getMonthName() {
-  let today = date;
+  let today = new Date();
   const months = ['Января', 'Февраля', 'Марта', 'Апреля', 'Майя', 'Июня',
                 'Июля', 'Августа', 'Сентября', 'Октяря', 'Ноября', 'Декабря'];
   return months[today.getMonth()]
@@ -124,7 +124,7 @@ function getMonthName() {
 
 // Get weekDay
 function getWeekDay() {
-  let today = date;
+  let today = new Date();
   let days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 
             'Пятница', 'Суббота'];
 
@@ -134,8 +134,8 @@ function getWeekDay() {
 //Hide placeholder
 
 
-name.addEventListener('keypress', setName);
-name.addEventListener('blur', setName);
+nameElement.addEventListener('keypress', setName);
+nameElement.addEventListener('blur', setName);
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
 

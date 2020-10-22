@@ -117,6 +117,22 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
+.name, .name::-webkit-input-placeholder {
+  text-align: left;
+}
+
+.name, .name:-ms-input-placeholder {
+  text-align: left;
+}
+
+.name, .name::-ms-input-placeholder {
+  text-align: left;
+}
+
+.name, .name::placeholder {
+  text-align: left;
+}
+
 .focus:focus, .name:focus {
   outline: none;
   border: 1px solid rgba(0, 0, 0, 0.4);
