@@ -38,6 +38,10 @@ body {
   opacity: 0.7;
 }
 
+.time {
+  cursor: default;
+}
+
 .date:hover {
   opacity: 1;
 }
@@ -58,9 +62,20 @@ h1 {
   margin-bottom: 3rem;
 }
 
-h2 {
-  margin-bottom: 0.5rem;
-  opacity: 0.8;
+.focus:focus, .name:focus {
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.focus:active, .name:active, .focus:focus, .name:focus {
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
+.text-hide {
+  color: transparent;
+  text-shadow: none;
 }
 
 @media (max-width: 700px) {
