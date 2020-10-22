@@ -2,28 +2,34 @@
 const time = document.querySelector('.time'),
   greeting = document.querySelector('.greeting'),
   name = document.querySelector('.name'),
-  focus = document.querySelector('.focus');
+  focus = document.querySelector('.focus'),
+  monthHtml = document.querySelector('.month'),
+  weekdayHtml = document.querySelector('.weekday');
 
 // Options
-const showAmPm = true;
+const showAmPm = false;
 
 // Show Time
 function showTime() {
   let today = new Date(),
     hour = today.getHours(),
     min = today.getMinutes(),
-    sec = today.getSeconds();
+    sec = today.getSeconds(),
+    month = getMonthName(),
+    weekDay = getWeekDay();
 
   // Set AM or PM
   const amPm = hour >= 12 ? 'PM' : 'AM';
 
   // 12hr Format
-  hour = hour % 12 || 12;
+  // hour = hour % 12 || 12;
 
   // Output Time
-  time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(
-    sec
-  )} ${showAmPm ? amPm : ''}`;
+  time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)} 
+                    ${showAmPm ? amPm : ''}`;
+
+  monthHtml.innerHTML = `${month}`;
+  weekdayHtml.innerHTML = `${weekDay}`
 
   setTimeout(showTime, 1000);
 }
@@ -38,22 +44,22 @@ function setBgGreet() {
   let today = new Date(),
     hour = today.getHours();
 
-  if (hour < 12) {
+  if (hour > 9 && hour < 12) {
     // Morning
-    document.body.style.backgroundImage =
-      "url('https://i.ibb.co/7vDLJFb/morning.jpg')";
+    document.body.style.backgroundImage = "url('./assets/images/morning/01.jpg')";
     greeting.textContent = 'Good Morning, ';
   } else if (hour < 18) {
-    // Afternoon
-    document.body.style.backgroundImage =
-      "url('https://i.ibb.co/3mThcXc/afternoon.jpg')";
+    // Day
+    document.body.style.backgroundImage = "url('./assets/images/day/01.jpg')";
     greeting.textContent = 'Good Afternoon, ';
-  } else {
+  } else if (hour < 22) {
     // Evening
-    document.body.style.backgroundImage =
-      "url('https://i.ibb.co/924T2Wv/night.jpg')";
+    document.body.style.backgroundImage = "url('./assets/images/evening/01.jpg')";
     greeting.textContent = 'Good Evening, ';
-    document.body.style.color = 'white';
+  } else {
+    // Night
+    document.body.style.backgroundImage = "url('./assets/images/night/01.jpg')";
+    greeting.textContent = 'Good Night, ';
   }
 }
 
@@ -101,6 +107,24 @@ function setFocus(e) {
   }
 }
 
+//Get month name
+function getMonthName() {
+  let today = new Date();
+  const months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+                'Июль', 'Август', 'Сентябрь', 'Октярь', 'Ноябрь', 'Декабрь'];
+  return months[today.getMonth()]
+}
+
+// Get weekDay
+function getWeekDay() {
+  let today = new Date();
+  let days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 
+            'Пятница', 'Суббота'];
+
+  return days[today.getDay()];
+}
+
+
 name.addEventListener('keypress', setName);
 name.addEventListener('blur', setName);
 focus.addEventListener('keypress', setFocus);
@@ -111,3 +135,5 @@ showTime();
 setBgGreet();
 getName();
 getFocus();
+getMonthName();
+getWeekDay();
