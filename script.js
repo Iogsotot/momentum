@@ -4,19 +4,25 @@ const time = document.querySelector('.time'),
   name = document.querySelector('.name'),
   focus = document.querySelector('.focus'),
   monthHtml = document.querySelector('.month'),
-  weekdayHtml = document.querySelector('.weekday');
+  weekdayHtml = document.querySelector('.weekday'),
+  dayHtml =  document.querySelector('.day');
+
+// Date toggle
+let date = new Date();
+
 
 // Options
-const showAmPm = false;
+const showAmPm = false; 
 
 // Show Time
 function showTime() {
-  let today = new Date(),
+  let today = date,
     hour = today.getHours(),
     min = today.getMinutes(),
     sec = today.getSeconds(),
     month = getMonthName(),
-    weekDay = getWeekDay();
+    weekDay = getWeekDay(),
+    day = today.getDay();
 
   // Set AM or PM
   const amPm = hour >= 12 ? 'PM' : 'AM';
@@ -29,7 +35,8 @@ function showTime() {
                     ${showAmPm ? amPm : ''}`;
 
   monthHtml.innerHTML = `${month}`;
-  weekdayHtml.innerHTML = `${weekDay}`
+  weekdayHtml.innerHTML = `${weekDay}`;
+  dayHtml.innerHTML = `${day}`;
 
   setTimeout(showTime, 1000);
 }
@@ -41,7 +48,7 @@ function addZero(n) {
 
 // Set Background and Greeting
 function setBgGreet() {
-  let today = new Date(),
+  let today = date,
     hour = today.getHours();
 
   if (hour > 9 && hour < 12) {
@@ -76,7 +83,7 @@ function getName() {
 function setName(e) {
   if (e.type === 'keypress') {
     // Make sure enter is pressed
-    if (e.which == 13 || e.keyCode == 13) {
+    if (e.which == 13 || e.keyCode == 13) {            // на всякий случай страхуем вторым условием - e.keyCode
       localStorage.setItem('name', e.target.innerText);
       name.blur();
     }
@@ -109,15 +116,15 @@ function setFocus(e) {
 
 //Get month name
 function getMonthName() {
-  let today = new Date();
-  const months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
-                'Июль', 'Август', 'Сентябрь', 'Октярь', 'Ноябрь', 'Декабрь'];
+  let today = date;
+  const months = ['Января', 'Февраля', 'Марта', 'Апреля', 'Майя', 'Июня',
+                'Июля', 'Августа', 'Сентября', 'Октяря', 'Ноября', 'Декабря'];
   return months[today.getMonth()]
 }
 
 // Get weekDay
 function getWeekDay() {
-  let today = new Date();
+  let today = date;
   let days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 
             'Пятница', 'Суббота'];
 
