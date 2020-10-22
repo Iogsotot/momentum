@@ -73,7 +73,7 @@ function setBgGreet() {
 // Get Name
 function getName() {
   if (localStorage.getItem('name') === null) {
-    name.textContent = '[твоё имя]';
+    name.textContent = '';
   } else {
     name.textContent = localStorage.getItem('name');
   }
@@ -95,9 +95,9 @@ function setName(e) {
 // Get Focus
 function getFocus() {
   if (localStorage.getItem('focus') === null) {
-    focus.textContent = '[твоя цель]';
+    focus.value = '';
   } else {
-    focus.textContent = localStorage.getItem('focus');
+    focus.value = localStorage.getItem('focus');
   }
 }
 
@@ -130,6 +130,8 @@ function getWeekDay() {
 
   return days[today.getDay()];
 }
+
+//Hide placeholder
 
 
 name.addEventListener('keypress', setName);

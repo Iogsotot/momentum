@@ -62,6 +62,61 @@ h1 {
   margin-bottom: 3rem;
 }
 
+.focus, .name, input::-webkit-input-placeholder {
+  display: inline;
+  width: auto;
+  color: white;
+  border: none;
+  background-color: transparent;
+  width: -webkit-fit-content;
+  width: fit-content;
+  text-align: center;
+  text-shadow: 1px 1px 2px black;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.focus, .name, input:-ms-input-placeholder {
+  display: inline;
+  width: auto;
+  color: white;
+  border: none;
+  background-color: transparent;
+  width: fit-content;
+  text-align: center;
+  text-shadow: 1px 1px 2px black;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.focus, .name, input::-ms-input-placeholder {
+  display: inline;
+  width: auto;
+  color: white;
+  border: none;
+  background-color: transparent;
+  width: fit-content;
+  text-align: center;
+  text-shadow: 1px 1px 2px black;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.focus, .name, input::placeholder {
+  display: inline;
+  width: auto;
+  color: white;
+  border: none;
+  background-color: transparent;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: center;
+  text-shadow: 1px 1px 2px black;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
 .focus:focus, .name:focus {
   outline: none;
   border: 1px solid rgba(0, 0, 0, 0.4);
@@ -73,14 +128,29 @@ h1 {
   border-color: rgba(0, 0, 0, 0.4);
 }
 
-.text-hide {
-  color: transparent;
-  text-shadow: none;
-}
-
 @media (max-width: 700px) {
   .time {
     font-size: 6rem;
   }
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+  text-shadow: none;
+}
+
+input:focus:-moz-placeholder {
+  color: transparent;
+  text-shadow: none;
+}
+
+input:focus::-moz-placeholder {
+  color: transparent;
+  text-shadow: none;
+}
+
+input:focus:-ms-input-placeholder {
+  color: transparent;
+  text-shadow: none;
 }
 /*# sourceMappingURL=style.css.map */
