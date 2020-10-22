@@ -3,10 +3,12 @@
           box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
 }
 
 body {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -26,8 +28,26 @@ body {
   color: white;
 }
 
-.day, .weekday, .month, .time, .greeting {
+.date,
+.greeting, .time, h2 {
   text-shadow: 1px 1px 2px black;
+}
+
+.date {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.date:hover {
+  opacity: 1;
+}
+
+.day, .month {
+  font-size: 1.5rem;
+}
+
+.weekday {
+  font-size: 2.5rem;
 }
 
 .time {

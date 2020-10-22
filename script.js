@@ -9,7 +9,7 @@ const time = document.querySelector('.time'),
 
 // Date toggle
 let date = new Date();
-
+// let date = new Date(2011, 0, 1, 20, 0, 0, 0);    // for checking
 
 // Options
 const showAmPm = false; 
@@ -31,7 +31,7 @@ function showTime() {
   // hour = hour % 12 || 12;
 
   // Output Time
-  time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)} 
+  time.innerHTML = `${addZero(hour)}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)} 
                     ${showAmPm ? amPm : ''}`;
 
   monthHtml.innerHTML = `${month}`;
@@ -51,22 +51,22 @@ function setBgGreet() {
   let today = date,
     hour = today.getHours();
 
-  if (hour > 9 && hour < 12) {
+  if (hour >= 6 && hour < 12 ) {
     // Morning
     document.body.style.backgroundImage = "url('./assets/images/morning/01.jpg')";
-    greeting.textContent = 'Good Morning, ';
-  } else if (hour < 18) {
+    greeting.textContent = 'Доброе утро, ';
+  } else if (hour >= 12 && hour < 18) {
     // Day
     document.body.style.backgroundImage = "url('./assets/images/day/01.jpg')";
-    greeting.textContent = 'Good Afternoon, ';
-  } else if (hour < 22) {
+    greeting.textContent = 'Добрый день, ';
+  } else if (hour >= 18 && hour <= 23) {
     // Evening
     document.body.style.backgroundImage = "url('./assets/images/evening/01.jpg')";
-    greeting.textContent = 'Good Evening, ';
+    greeting.textContent = 'Добрый вечер, ';
   } else {
     // Night
     document.body.style.backgroundImage = "url('./assets/images/night/01.jpg')";
-    greeting.textContent = 'Good Night, ';
+    greeting.textContent = 'Прекрасная ночь, ';
   }
 }
 
