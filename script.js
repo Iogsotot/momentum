@@ -74,9 +74,10 @@ let bgDown = document.querySelector('.bg-2');
     let bgHour = today.getHours();
     let bgDayTime = getDayTime();
 
-    let bgTopIndex = ShuffleBgArr[0];  //mock
-    let bgDownIndex = ShuffleBgArr[1];  //mock
-
+    let bgTopIndex = ShuffleBgArr[0];  
+    let bgDownIndex = ShuffleBgArr[1];  
+    
+    // научить менять картинки между собой (класс .current) и при это отслеживать подгрузку картинки для мягкой смнеы картинок - onload
     bgTop.style.backgroundImage = `url('./assets/images/${bgDayTime}/${addZero(bgTopIndex)}.jpg')`; 
     bgDown.style.backgroundImage = `url('./assets/images/${bgDayTime}/${addZero(bgDownIndex)}.jpg')`; 
 
@@ -96,7 +97,14 @@ let bgDown = document.querySelector('.bg-2');
 
 // Shaffle imgs array     сделать так, чтобы при обновлении страницы шафл пересобирался (проверить работу)
 let bgArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-let ShuffleBgArr = shuffle(bgArr);
+let arrMorning = shuffle(bgArr).slice(5, 11);
+let arrDay = shuffle(bgArr).slice(5, 11);
+let arrEvening = shuffle(bgArr).slice(5, 11);
+let arrNight = shuffle(bgArr).slice(5, 11);
+
+
+let ShuffleBgArr = arrMorning.concat(arrDay).concat(arrEvening).concat(arrNight);
+
 
 function shuffle(arr) {
   var j, temp;
