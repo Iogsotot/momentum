@@ -203,8 +203,10 @@ input:focus:-ms-input-placeholder {
   z-index: -2;
 }
 
-// .quote-block {
-// }
+.quote-block {
+  display: flex;
+  flex-direction: row;
+}
 .quote {
   display: flex;
   flex-direction: column;
@@ -219,7 +221,18 @@ input:focus:-ms-input-placeholder {
   margin: 1rem auto 1rem;
 }
 
-.quote:hover {
+.quote-refresh {
+  width: 3rem;
+  height: 3rem;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  flex-shrink: 0;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.quote:hover, .quote-refresh:hover, .quote:hover .quote-refresh, .quote-block:hover .quote-refresh {
   opacity: 1;
 }
 
@@ -269,7 +282,7 @@ input:focus:-ms-input-placeholder {
     align-self: flex-end;
   }
   .quote-block {
-    max-width: 40rem;
+    max-width: 43rem;
   }
   .time {
     font-size: 8rem;
@@ -284,7 +297,7 @@ input:focus:-ms-input-placeholder {
     padding-left: 2rem;
   }
   .quote-block {
-    max-width: 42.5rem;
+    max-width: 45.5rem;
   }
   .time {
     font-size: 9rem;

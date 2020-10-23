@@ -46,7 +46,7 @@ function getDirection(angle) {
 //Get city
 function getCity() {
     if (!localStorage.getItem('city')) {
-        city.textContent = 'Лихтенштейн';
+        city.textContent = 'Санкт-Петербург';
     } else {
         city.textContent = localStorage.getItem('city');
     }

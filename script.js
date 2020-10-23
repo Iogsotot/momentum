@@ -181,26 +181,6 @@ function getWeekDay() {
   return days[today.getDay()];
 }
 
-// input size                                                 didn't work at all 
-// let inputName = document.querySelector('.name');
-// let inputFocus = document.querySelector('.focus');
-// let NameSize = inputName.getAttribute('size');
-// let FocusSize = inputFocus.getAttribute('size');
-// let FocusElementSize = inputElement[1].getAttribute('size');
-
-
-// function inputWidthChange(e) {
-//   inputName.style.width = '23rem'
-//   inputFocus.style.width = '15rem'
-//   if (e.type === 'keypress') { 
-//     console.log(inputName.style.width)
-//     console.log(inputFocus.style.width)
-//   } else {return}
-// }
-
-// nameElement.addEventListener('onchange', inputWidthChange);
-// focus.addEventListener('onchange', inputWidthChange);
-
 nameElement.addEventListener('keypress', setName);
 nameElement.addEventListener('blur', setName);
 focus.addEventListener('keypress', setFocus);
