@@ -99,26 +99,33 @@
     <h2 class="weekday"></h2>
   </div>
   <time class="time"></time>
-  <h1>
+  <h1 class="greeting-block">
     <span class="greeting"></span> 
     <input 
       class="name" 
       type="text" 
       placeholder="[твоё имя]"
-      maxlength="25"
+      maxlength="20"
       size="20"
     >
   </h1>
-  <h2>Над чем сегодня планируешь работать?</h2>
-  <input 
-    class="focus" 
-    placeholder="[твоя цель]" 
-    type="text"
-    maxlength="35"
-    size="35"
-  >
-  <script src="weather.js"></script>
+  <div class="focus-block">
+    <h2>Над чем сегодня планируешь работать?</h2>
+    <input 
+      class="focus" 
+      placeholder="[твоя цель]" 
+      type="text"
+      maxlength="35"
+      size="35"
+    >
+  </div>
+  <div class="quote-block">
+    <div class="quote"></div>
+  </div>
+
   <script src="script.js"></script>
+  <script src="weather.js"></script>
+  <script src="quotes.js"></script>
 </body>
 </html>
 

@@ -24,13 +24,16 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   text-align: center;
   height: 100vh;
   background-size: cover;
   color: white;
+  margin: auto;
+  max-width: 32rem;
+  overflow-x: hidden;
 }
 
 .date,
@@ -47,27 +50,27 @@ h2 {
 
 .time {
   cursor: default;
-  font-size: 10rem;
+  font-size: 6rem;
 }
 
 .date:hover {
   opacity: 1;
 }
 
-.day,
-.month {
-  font-size: 2.5rem;
+.date {
+  font-size: 3.5rem;
 }
 
-.month-date {
-  font-size: 3.5rem;
+.day,
+.month {
+  font-size: 2rem;
 }
 
 h1,
 .name,
 .name::-webkit-input-placeholder {
-  margin-bottom: 3rem;
-  font-size: 4.5rem;
+  margin: 1.5rem 0 2rem;
+  font-size: 2rem;
   font-weight: 700;
   text-align: center;
   text-shadow: 1px 1px 2px black;
@@ -76,8 +79,8 @@ h1,
 h1,
 .name,
 .name:-ms-input-placeholder {
-  margin-bottom: 3rem;
-  font-size: 4.5rem;
+  margin: 1.5rem 0 2rem;
+  font-size: 2rem;
   font-weight: 700;
   text-align: center;
   text-shadow: 1px 1px 2px black;
@@ -86,8 +89,8 @@ h1,
 h1,
 .name,
 .name::-ms-input-placeholder {
-  margin-bottom: 3rem;
-  font-size: 4.5rem;
+  margin: 1.5rem 0 2rem;
+  font-size: 2rem;
   font-weight: 700;
   text-align: center;
   text-shadow: 1px 1px 2px black;
@@ -96,8 +99,8 @@ h1,
 h1,
 .name,
 .name::placeholder {
-  margin-bottom: 3rem;
-  font-size: 4.5rem;
+  margin: 1.5rem 0 2rem;
+  font-size: 2rem;
   font-weight: 700;
   text-align: center;
   text-shadow: 1px 1px 2px black;
@@ -106,7 +109,7 @@ h1,
 h2,
 .focus,
 .focus::-webkit-input-placeholder {
-  font-size: 2.5rem;
+  font-size: 1.9rem;
   font-weight: 700;
   text-align: center;
   opacity: 0.9;
@@ -116,7 +119,7 @@ h2,
 h2,
 .focus,
 .focus:-ms-input-placeholder {
-  font-size: 2.5rem;
+  font-size: 1.9rem;
   font-weight: 700;
   text-align: center;
   opacity: 0.9;
@@ -126,7 +129,7 @@ h2,
 h2,
 .focus,
 .focus::-ms-input-placeholder {
-  font-size: 2.5rem;
+  font-size: 1.9rem;
   font-weight: 700;
   text-align: center;
   opacity: 0.9;
@@ -136,35 +139,55 @@ h2,
 h2,
 .focus,
 .focus::placeholder {
-  font-size: 2.5rem;
+  font-size: 1.9rem;
   font-weight: 700;
   text-align: center;
   opacity: 0.9;
   text-shadow: 1px 1px 2px black;
 }
 
+.focus,
+.focus::-webkit-input-placeholder {
+  font-size: 1.5rem;
+}
+
+.focus,
+.focus:-ms-input-placeholder {
+  font-size: 1.5rem;
+}
+
+.focus,
+.focus::-ms-input-placeholder {
+  font-size: 1.5rem;
+}
+
+.focus,
+.focus::placeholder {
+  font-size: 1.5rem;
+}
+
 .weather {
-  height: 24rem;
+  height: 16rem;
   margin: 1.5rem auto;
   font-family: "Quicksand", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   text-shadow: 1px 1px 2px black;
   opacity: 0.8;
   cursor: default;
 }
 
 .weather-icon {
-  font-size: 10rem;
+  font-size: 6rem;
 }
 
 .temperature {
-  font-size: 3.5rem;
+  font-size: 2.2rem;
   opacity: 1;
 }
 
 .city {
   cursor: text;
-  font-size: 2.8rem;
+  font-size: 2rem;
   opacity: 0.9;
 }
 
@@ -272,8 +295,8 @@ input::placeholder {
 
 .error {
   visibility: hidden;
-  cursor: default;
-  font-size: 3rem;
+  width: 100vw;
+  font-size: 2.5rem;
   color: red;
   font-weight: 700;
   background-color: rgba(0, 0, 0, 0.7);
@@ -281,11 +304,12 @@ input::placeholder {
   border-radius: 0.5rem;
   text-shadow: 2px 2px 2px black;
   opacity: 1;
+  cursor: default;
 }
 
 .error-img > svg {
   display: none;
-  height: 23rem;
+  height: 16rem;
   width: auto;
   margin: auto;
   fill: white;
@@ -343,7 +367,116 @@ input:focus:-ms-input-placeholder {
   z-index: -2;
 }
 
-k {
-  background-image: url(./assets/images/day/08.jpg);
+.quote {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  height: 7rem;
+  font-size: 1.4rem;
+  font-style: italic;
+  vertical-align: bottom;
+  color: antiquewhite;
+  text-shadow: 1px 1px 2px black;
+  opacity: 0.9;
+  margin: 1rem auto 1rem;
+}
+
+.quote:hover {
+  opacity: 1;
+}
+
+@media (min-width: 500px) {
+  html {
+    font-size: 13px;
+  }
+  body {
+    max-width: 500px;
+  }
+  h1, .name, .name::-webkit-input-placeholder {
+    font-size: 2.2rem;
+  }
+  h1, .name, .name:-ms-input-placeholder {
+    font-size: 2.2rem;
+  }
+  h1, .name, .name::-ms-input-placeholder {
+    font-size: 2.2rem;
+  }
+  h1, .name, .name::placeholder {
+    font-size: 2.2rem;
+  }
+  .city {
+    font-size: 1.8rem;
+  }
+  .error {
+    font-size: 2rem;
+  }
+  .date {
+    font-size: 3.2rem;
+  }
+  .time {
+    font-size: 7rem;
+  }
+  h1, .name, .name::-webkit-input-placeholder {
+    margin: 1rem 0 1rem;
+  }
+  h1, .name, .name:-ms-input-placeholder {
+    margin: 1rem 0 1rem;
+  }
+  h1, .name, .name::-ms-input-placeholder {
+    margin: 1rem 0 1rem;
+  }
+  h1, .name, .name::placeholder {
+    margin: 1rem 0 1rem;
+  }
+  .weather {
+    margin: 1rem auto;
+  }
+  .error {
+    max-width: 41rem;
+  }
+}
+
+@media (min-width: 860px) {
+  body {
+    max-width: 100vw;
+  }
+  .error {
+    width: auto;
+    padding: 0 1rem;
+  }
+  .weather-block {
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+  }
+  .quote-block {
+    max-width: 40rem;
+  }
+  .time {
+    font-size: 8rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .quote-block {
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+  }
+  q {
+    text-align: left;
+    padding-left: 2rem;
+  }
+  .quote-block {
+    max-width: 42.5rem;
+  }
+  .time {
+    font-size: 9rem;
+  }
 }
 /*# sourceMappingURL=style.css.map */
