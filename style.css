@@ -371,10 +371,10 @@ input:focus:-ms-input-placeholder {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
 }
 
 .quote {
@@ -406,12 +406,22 @@ input:focus:-ms-input-placeholder {
   border-radius: 50%;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+  margin: 0 auto;
   opacity: 0.7;
   cursor: pointer;
 }
 
 .quote:hover, .quote-refresh:hover, .quote:hover .quote-refresh, .quote-block:hover .quote-refresh {
   opacity: 1;
+}
+
+.quote-refresh:hover {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+  -webkit-transition: -webkit-transform 400ms linear;
+  transition: -webkit-transform 400ms linear;
+  transition: transform 400ms linear;
+  transition: transform 400ms linear, -webkit-transform 400ms linear;
 }
 
 @media (min-width: 500px) {
@@ -462,6 +472,12 @@ input:focus:-ms-input-placeholder {
   }
   .error {
     max-width: 41rem;
+  }
+  .quote-block {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
 }
 
