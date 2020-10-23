@@ -424,6 +424,32 @@ input:focus:-ms-input-placeholder {
   transition: transform 400ms linear, -webkit-transform 400ms linear;
 }
 
+.img-next-btn {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  text-shadow: white;
+  cursor: pointer;
+}
+
+.img-next-btn > svg {
+  fill: white;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  opacity: 0.8;
+}
+
+.img-next-btn:hover {
+  -webkit-transform: translateX(0.5rem);
+          transform: translateX(0.5rem);
+}
+
+.img-next-btn:hover svg {
+  opacity: 1;
+}
+
 @media (min-width: 500px) {
   html {
     font-size: 13px;
