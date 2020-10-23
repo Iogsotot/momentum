@@ -61,7 +61,8 @@ h2, .focus, .focus::placeholder {
 }
 
 .weather {
-  margin: 1.5rem;
+  height: 24rem;
+  margin: 1.5rem auto;
   font-family: "Quicksand", sans-serif;
   font-size: 1.5rem;
   text-shadow: 1px 1px 2px black;
@@ -89,7 +90,7 @@ h2, .focus, .focus::placeholder {
   display: inline;
   width: auto;
   color: white;
-  border: none;
+  border: 1px solid transparent;
   background-color: transparent;
   width: fit-content;
   text-align: center;
@@ -111,11 +112,27 @@ h2, .focus, .focus::placeholder {
   border-color: rgba(0, 0, 0, 0.4);
 }
 
-@media (max-width: 700px) {
-  .time {
-    font-size: 8rem;
-  }
+.error {
+  visibility: hidden;
+  cursor: default;
+  font-size: 3rem;
+  color: red;
+  font-weight: 700;
+
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid transparent;
+  border-radius: 0.5rem;;
+  text-shadow: 2px 2px 2px black;
+  opacity: 1;
 }
+.error-img > svg {
+  display: none;
+  height: 23rem;
+  width: auto;
+  margin: auto;
+  fill: white;
+}
+
 
 
 input:focus::-webkit-input-placeholder { 

@@ -4,11 +4,25 @@ const wind = document.querySelector('.wind');
 const humidity = document.querySelector('.humidity');
 const weatherDescription = document.querySelector('.weather-description');
 const city = document.querySelector('.city');
+const error = document.querySelector('.error');
+const errorImg = document.querySelector('svg');
 
 async function getWeather() {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=ru&appid=6ba25fbc62d3d73369c6be9caf83a8d7&units=metric`;
     const promise = await fetch(url);
-    const data = await promise.json();
+    if (promise.ok) {
+        var data = await promise.json();
+        error.style.visibility = 'hidden';
+        errorImg.style.display = 'none';
+    } else {
+        error.style.visibility = 'visible';
+        errorImg.style.display = 'block';
+        wind.textContent = '';
+        humidity.textContent = '';
+        weatherDescription.textContent = '';
+        temperature.textContent = '';
+    }
+    
 
     weatherIcon.className = 'weather-icon owf';
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
