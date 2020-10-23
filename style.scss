@@ -4,7 +4,9 @@
   padding: 0;
   transition: all 200ms linear;
 }
-
+html {
+  font-size: 10px;
+}
 body {
   font-family: "Quicksand", sans-serif;
   display: flex;
@@ -27,6 +29,7 @@ body {
 
 .time {
   cursor: default;
+  font-size: 10rem;
 }
 
 .date:hover {
@@ -34,20 +37,53 @@ body {
 }
 
 .day, .month {
-  font-size: 1.5rem;
-}
-
-.weekday {
   font-size: 2.5rem;
 }
 
-.time {
-  font-size: 8rem;
+.month-date {
+  font-size: 3.5rem;
 }
 
-h1 {
+h1, .name, .name::placeholder {
   margin-bottom: 3rem;
+  font-size: 4.5rem;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 1px 1px 2px black;
 }
+
+h2, .focus, .focus::placeholder {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  opacity: 0.9;
+  text-shadow: 1px 1px 2px black;
+}
+
+.weather {
+  margin: 1.5rem;
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 2px black;
+  opacity: 0.8;
+}
+.weather-icon {
+  font-size: 10rem;
+}
+.temperature {
+  font-size: 3.5rem;
+  opacity: 1;
+}
+.city {
+  font-size: 2.8rem;
+  opacity: 0.9;
+}
+
+.weather:hover {
+  opacity: 1;
+} 
+
+
 
 .focus, .name, input::placeholder  {
   display: inline;
@@ -58,12 +94,11 @@ h1 {
   width: fit-content;
   text-align: center;
   text-shadow: 1px 1px 2px black;
-  font-size: 2rem;
   margin-bottom: 0.5rem;
-  // opacity: 0.8;
 }
 .name, .name::placeholder {
-  text-align: left;
+  display: block;
+  text-align: center;
 }
 .focus:focus, .name:focus {
   outline: none;
@@ -78,7 +113,7 @@ h1 {
 
 @media (max-width: 700px) {
   .time {
-    font-size: 6rem;
+    font-size: 8rem;
   }
 }
 
