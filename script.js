@@ -67,13 +67,19 @@ function setBgGreet() {
 }
 
 // Changing background 
+let bgTop = document.querySelector('.bg-1');
+let bgDown = document.querySelector('.bg-2');
   function bgChanging () {
     let today = new Date();
     let bgHour = today.getHours();
-    // let bgHour = 2
     let bgDayTime = getDayTime();
-    document.body.style.backgroundImage = `url('./assets/images/${bgDayTime}/${addZero(bgHour)}.jpg')`;  //заменить bgHour на элемент массива картинок(и задать рандомное пересоздание массива при рефреше страницы)
-    console.log( document.body.style.backgroundImage);
+
+    let bgTopIndex = ShuffleBgArr[0];  //mock
+    let bgDownIndex = ShuffleBgArr[1];  //mock
+
+    bgTop.style.backgroundImage = `url('./assets/images/${bgDayTime}/${addZero(bgTopIndex)}.jpg')`; 
+    bgDown.style.backgroundImage = `url('./assets/images/${bgDayTime}/${addZero(bgDownIndex)}.jpg')`; 
+
 
     function getDayTime() {
       if (bgHour >= 6 && bgHour < 12 ) {
@@ -87,6 +93,22 @@ function setBgGreet() {
       }
     }
   }
+
+// Shaffle imgs array     сделать так, чтобы при обновлении страницы шафл пересобирался (проверить работу)
+let bgArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+let ShuffleBgArr = shuffle(bgArr);
+
+function shuffle(arr) {
+  var j, temp;
+    for(var i = arr.length - 1; i > 0; i--){
+      j = Math.floor(Math.random()*(i + 1));
+      temp = arr[j];
+      arr[j] = arr[i];
+      arr[i] = temp;
+    }
+      return arr;
+};
+
 
 
 // Get Name

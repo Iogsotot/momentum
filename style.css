@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -33,7 +34,9 @@ body {
 }
 
 .date,
-.greeting, .time, h2 {
+.greeting,
+.time,
+h2 {
   text-shadow: 1px 1px 2px black;
 }
 
@@ -51,7 +54,8 @@ body {
   opacity: 1;
 }
 
-.day, .month {
+.day,
+.month {
   font-size: 2.5rem;
 }
 
@@ -59,7 +63,9 @@ body {
   font-size: 3.5rem;
 }
 
-h1, .name, .name::-webkit-input-placeholder {
+h1,
+.name,
+.name::-webkit-input-placeholder {
   margin-bottom: 3rem;
   font-size: 4.5rem;
   font-weight: 700;
@@ -67,7 +73,9 @@ h1, .name, .name::-webkit-input-placeholder {
   text-shadow: 1px 1px 2px black;
 }
 
-h1, .name, .name:-ms-input-placeholder {
+h1,
+.name,
+.name:-ms-input-placeholder {
   margin-bottom: 3rem;
   font-size: 4.5rem;
   font-weight: 700;
@@ -75,7 +83,9 @@ h1, .name, .name:-ms-input-placeholder {
   text-shadow: 1px 1px 2px black;
 }
 
-h1, .name, .name::-ms-input-placeholder {
+h1,
+.name,
+.name::-ms-input-placeholder {
   margin-bottom: 3rem;
   font-size: 4.5rem;
   font-weight: 700;
@@ -83,7 +93,9 @@ h1, .name, .name::-ms-input-placeholder {
   text-shadow: 1px 1px 2px black;
 }
 
-h1, .name, .name::placeholder {
+h1,
+.name,
+.name::placeholder {
   margin-bottom: 3rem;
   font-size: 4.5rem;
   font-weight: 700;
@@ -91,7 +103,9 @@ h1, .name, .name::placeholder {
   text-shadow: 1px 1px 2px black;
 }
 
-h2, .focus, .focus::-webkit-input-placeholder {
+h2,
+.focus,
+.focus::-webkit-input-placeholder {
   font-size: 2.5rem;
   font-weight: 700;
   text-align: center;
@@ -99,7 +113,9 @@ h2, .focus, .focus::-webkit-input-placeholder {
   text-shadow: 1px 1px 2px black;
 }
 
-h2, .focus, .focus:-ms-input-placeholder {
+h2,
+.focus,
+.focus:-ms-input-placeholder {
   font-size: 2.5rem;
   font-weight: 700;
   text-align: center;
@@ -107,7 +123,9 @@ h2, .focus, .focus:-ms-input-placeholder {
   text-shadow: 1px 1px 2px black;
 }
 
-h2, .focus, .focus::-ms-input-placeholder {
+h2,
+.focus,
+.focus::-ms-input-placeholder {
   font-size: 2.5rem;
   font-weight: 700;
   text-align: center;
@@ -115,7 +133,9 @@ h2, .focus, .focus::-ms-input-placeholder {
   text-shadow: 1px 1px 2px black;
 }
 
-h2, .focus, .focus::placeholder {
+h2,
+.focus,
+.focus::placeholder {
   font-size: 2.5rem;
   font-weight: 700;
   text-align: center;
@@ -152,7 +172,9 @@ h2, .focus, .focus::placeholder {
   opacity: 1;
 }
 
-.focus, .name, input::-webkit-input-placeholder {
+.focus,
+.name,
+input::-webkit-input-placeholder {
   display: inline;
   width: auto;
   color: white;
@@ -165,7 +187,9 @@ h2, .focus, .focus::placeholder {
   margin-bottom: 0.5rem;
 }
 
-.focus, .name, input:-ms-input-placeholder {
+.focus,
+.name,
+input:-ms-input-placeholder {
   display: inline;
   width: auto;
   color: white;
@@ -177,7 +201,9 @@ h2, .focus, .focus::placeholder {
   margin-bottom: 0.5rem;
 }
 
-.focus, .name, input::-ms-input-placeholder {
+.focus,
+.name,
+input::-ms-input-placeholder {
   display: inline;
   width: auto;
   color: white;
@@ -189,7 +215,9 @@ h2, .focus, .focus::placeholder {
   margin-bottom: 0.5rem;
 }
 
-.focus, .name, input::placeholder {
+.focus,
+.name,
+input::placeholder {
   display: inline;
   width: auto;
   color: white;
@@ -203,34 +231,42 @@ h2, .focus, .focus::placeholder {
   margin-bottom: 0.5rem;
 }
 
-.name, .name::-webkit-input-placeholder {
+.name,
+.name::-webkit-input-placeholder {
   display: block;
   text-align: center;
 }
 
-.name, .name:-ms-input-placeholder {
+.name,
+.name:-ms-input-placeholder {
   display: block;
   text-align: center;
 }
 
-.name, .name::-ms-input-placeholder {
+.name,
+.name::-ms-input-placeholder {
   display: block;
   text-align: center;
 }
 
-.name, .name::placeholder {
+.name,
+.name::placeholder {
   display: block;
   text-align: center;
 }
 
-.focus:focus, .name:focus {
+.focus:focus,
+.name:focus {
   outline: none;
   border: 1px solid rgba(0, 0, 0, 0.4);
   border-radius: 3px;
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.focus:active, .name:active, .focus:focus, .name:focus {
+.focus:active,
+.name:active,
+.focus:focus,
+.name:focus {
   border-color: rgba(0, 0, 0, 0.4);
 }
 
@@ -273,5 +309,41 @@ input:focus::-moz-placeholder {
 input:focus:-ms-input-placeholder {
   color: transparent;
   text-shadow: none;
+}
+
+.background-block .bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  /* Firefox 3.6+ */
+  /* Safari 3.1+ и Chrome 4.0+ */
+  /* Opera 9.6+ */
+  background-size: 100%;
+  /* Современные браузеры */
+  background-size: cover;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: opacity 0.8s ease-in;
+  transition: opacity 0.8s ease-in;
+}
+
+.background-block .bg.current {
+  opacity: 1;
+}
+
+.background-block {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+
+k {
+  background-image: url(./assets/images/day/08.jpg);
 }
 /*# sourceMappingURL=style.css.map */
