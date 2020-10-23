@@ -426,7 +426,7 @@ input:focus:-ms-input-placeholder {
 
 .img-next-btn {
   position: absolute;
-  bottom: 1rem;
+  top: 1rem;
   right: 1rem;
   width: 3rem;
   height: 3rem;
@@ -524,6 +524,10 @@ input:focus:-ms-input-placeholder {
   }
   .time {
     font-size: 8rem;
+  }
+  .img-next-btn {
+    top: auto;
+    bottom: 1rem;
   }
 }
 
