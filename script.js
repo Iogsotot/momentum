@@ -53,22 +53,41 @@ function setBgGreet() {
 
   if (hour >= 6 && hour < 12 ) {
     // Morning
-    document.body.style.backgroundImage = "url('./assets/images/morning/01.jpg')";
     greeting.textContent = 'Доброе утро, ';
   } else if (hour >= 12 && hour < 18) {
     // Day
-    document.body.style.backgroundImage = "url('./assets/images/day/01.jpg')";
     greeting.textContent = 'Добрый день, ';
   } else if (hour >= 18 && hour <= 23) {
     // Evening
-    document.body.style.backgroundImage = "url('./assets/images/evening/01.jpg')";
     greeting.textContent = 'Добрый вечер, ';
   } else {
     // Night
-    document.body.style.backgroundImage = "url('./assets/images/night/01.jpg')";
     greeting.textContent = 'Прекрасная ночь, ';
   }
 }
+
+// Changing background 
+  function bgChanging () {
+    let today = new Date();
+    let bgHour = today.getHours();
+    // let bgHour = 2
+    let bgDayTime = getDayTime();
+    document.body.style.backgroundImage = `url('./assets/images/${bgDayTime}/${addZero(bgHour)}.jpg')`;  //заменить bgHour на элемент массива картинок(и задать рандомное пересоздание массива при рефреше страницы)
+    console.log( document.body.style.backgroundImage);
+
+    function getDayTime() {
+      if (bgHour >= 6 && bgHour < 12 ) {
+        return 'morning';
+      } else if (bgHour >= 12 && bgHour < 18) {
+        return 'day';
+      } else if (bgHour >= 18 && bgHour <= 23) {
+        return 'evening';
+      } else {
+        return 'night';
+      }
+    }
+  }
+
 
 // Get Name
 function getName() {
@@ -159,6 +178,7 @@ focus.addEventListener('blur', setFocus);
 // Run
 showTime();
 setBgGreet();
+bgChanging();
 getName();
 getFocus();
 getMonthName();
