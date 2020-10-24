@@ -41,7 +41,18 @@ function shuffle(arr) {
     return arr;
 };
 
-let quote = shuffle(QUOTES)[0];
-quoteElement.innerHTML = `<q>${quote}</q>`;
+// let quotes = shuffle(QUOTES)
+// let quote = quotes[0];
+// quoteElement.innerHTML = `<q>${quote}</q>`;
 
+// кнопка переключения цитат
+const quoteRandomBtn = document.querySelector('.quote-refresh');
+function getNewQuote() {
+    let quotes = shuffle(QUOTES)
+    let quote = quotes[0];
+    quoteElement.innerHTML = `<q>${quote}</q>`;
+}
 
+addEventListener('click', getNewQuote);
+
+getNewQuote()
