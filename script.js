@@ -69,20 +69,20 @@ function setBgGreet() {
 // Changing background 
 let bgTop = document.querySelector('.bg-1');
 let bgDown = document.querySelector('.bg-2');
-  function bgChanging () {
+  function ChangeBg () {
     let today = new Date();
     let bgHour = today.getHours();
     let bgDayTime = getDayTime();
 
     let bgTopIndex = ShuffleBgArr[bgHour];  
-    let bgDownIndex = () => {
-      if (bgHour === 24) return 18
-      else return bgHour+1
-    }  
+    let bgDownIndex = (bgHour) => {
+      if (bgHour == 24) return ShuffleBgArr[0]
+      else return ShuffleBgArr[bgHour+1]
+    }      
     
     // научить менять картинки между собой (класс .current) и при это отслеживать подгрузку картинки для мягкой смнеы картинок - onload
     bgTop.style.backgroundImage = `url('./assets/images/${bgDayTime}/${addZero(bgTopIndex)}.jpg')`; 
-    bgDown.style.backgroundImage = `url('./assets/images/${bgDayTime}/${addZero(bgDownIndex)}.jpg')`; 
+    bgDown.style.backgroundImage = `url('./assets/images/${bgDayTime}/${addZero(bgDownIndex(bgHour))}.jpg')`; 
 
 
     function getDayTime() {
@@ -105,7 +105,8 @@ let arrDay = shuffle(bgArr).slice(5, 11);
 let arrEvening = shuffle(bgArr).slice(5, 11);
 let arrNight = shuffle(bgArr).slice(5, 11);
 
-let ShuffleBgArr = arrMorning.concat(arrDay).concat(arrEvening).concat(arrNight);
+// let ShuffleBgArr = arrMorning.concat(arrDay).concat(arrEvening).concat(arrNight);
+let ShuffleBgArr = arrNight.concat(arrMorning).concat(arrDay).concat(arrEvening);
 
 function shuffle(arr) {
   var j, temp;
@@ -189,7 +190,7 @@ focus.addEventListener('blur', setFocus);
 // Run
 showTime();
 setBgGreet();
-bgChanging();
+ChangeBg();
 getName();
 getFocus();
 getMonthName();
