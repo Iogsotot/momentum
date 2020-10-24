@@ -392,7 +392,7 @@ input:focus:-ms-input-placeholder {
   font-size: 1.4rem;
   font-style: italic;
   vertical-align: bottom;
-  color: antiquewhite;
+  color: #eeeeee;
   text-shadow: 1px 1px 2px black;
   opacity: 0.9;
   margin: 1rem auto 1rem;

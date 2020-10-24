@@ -22,7 +22,7 @@ function showTime() {
     sec = today.getSeconds(),
     month = getMonthName(),
     weekDay = getWeekDay(),
-    day = today.getDay();
+    day = today.getDate();
 
 // Set AM or PM
   const amPm = hour >= 12 ? 'PM' : 'AM';
@@ -168,7 +168,7 @@ function setFocus(e) {
 function getMonthName() {
   let today = new Date();
   const months = ['Января', 'Февраля', 'Марта', 'Апреля', 'Майя', 'Июня',
-                'Июля', 'Августа', 'Сентября', 'Октяря', 'Ноября', 'Декабря'];
+                'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
   return months[today.getMonth()]
 }
 

@@ -6,15 +6,21 @@ const weatherDescription = document.querySelector('.weather-description');
 const city = document.querySelector('.city');
 const error = document.querySelector('.error');
 const errorImg = document.querySelector('svg');
+const placeholder = document.querySelector('.placeholder');
 
 async function getWeather() {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=ru&appid=6ba25fbc62d3d73369c6be9caf83a8d7&units=metric`;
     const promise = await fetch(url);
     if (promise.ok) {
+        // placeholder.classList.remove('.show');
         var data = await promise.json();
         error.style.visibility = 'hidden';
         errorImg.style.display = 'none';
+    } else if (city.textContent === '') {
+        // placeholder.classList.add('show');
+        return
     } else {
+        // placeholder.classList.remove('.show');
         error.style.visibility = 'visible';
         errorImg.style.display = 'block';
         wind.textContent = '';
@@ -46,7 +52,7 @@ function getDirection(angle) {
 //Get city
 function getCity() {
     if (!localStorage.getItem('city')) {
-        city.textContent = 'Санкт-Петербург';
+        city.textContent = 'Москва';
     } else {
         city.textContent = localStorage.getItem('city');
     }
