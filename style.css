@@ -29,7 +29,6 @@ body {
           justify-content: space-between;
   text-align: center;
   height: 100vh;
-  background-size: cover;
   color: white;
   margin: auto;
   max-width: 32rem;
@@ -199,59 +198,44 @@ h2,
 .name,
 input::-webkit-input-placeholder {
   display: inline;
-  width: auto;
   color: white;
   border: 1px solid transparent;
   background-color: transparent;
-  width: -webkit-fit-content;
-  width: fit-content;
   text-align: center;
   text-shadow: 1px 1px 2px black;
-  margin-bottom: 0.5rem;
 }
 
 .focus,
 .name,
 input:-ms-input-placeholder {
   display: inline;
-  width: auto;
   color: white;
   border: 1px solid transparent;
   background-color: transparent;
-  width: fit-content;
   text-align: center;
   text-shadow: 1px 1px 2px black;
-  margin-bottom: 0.5rem;
 }
 
 .focus,
 .name,
 input::-ms-input-placeholder {
   display: inline;
-  width: auto;
   color: white;
   border: 1px solid transparent;
   background-color: transparent;
-  width: fit-content;
   text-align: center;
   text-shadow: 1px 1px 2px black;
-  margin-bottom: 0.5rem;
 }
 
 .focus,
 .name,
 input::placeholder {
   display: inline;
-  width: auto;
   color: white;
   border: 1px solid transparent;
   background-color: transparent;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
   text-align: center;
   text-shadow: 1px 1px 2px black;
-  margin-bottom: 0.5rem;
 }
 
 .name,
@@ -375,6 +359,9 @@ input:focus:-ms-input-placeholder {
   -webkit-box-direction: reverse;
       -ms-flex-direction: column-reverse;
           flex-direction: column-reverse;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .quote {
@@ -504,6 +491,11 @@ input:focus:-ms-input-placeholder {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+    width: 480px;
+    padding-left: 3rem;
+  }
+  .quote-refresh {
+    margin: 0;
   }
 }
 
@@ -520,7 +512,7 @@ input:focus:-ms-input-placeholder {
         align-self: flex-end;
   }
   .quote-block {
-    max-width: 43rem;
+    width: 43rem;
   }
   .time {
     font-size: 8rem;
@@ -535,13 +527,17 @@ input:focus:-ms-input-placeholder {
   .quote-block {
     -ms-flex-item-align: start;
         align-self: flex-start;
+    padding-left: 0;
   }
   q {
     text-align: left;
     padding-left: 2rem;
   }
+  .quote {
+    margin: 1rem 0 1rem;
+  }
   .quote-block {
-    max-width: 45.5rem;
+    width: 45.5rem;
   }
   .time {
     font-size: 9rem;
