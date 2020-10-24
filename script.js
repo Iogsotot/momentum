@@ -67,36 +67,107 @@ function setBgGreet() {
 }
 
 // Changing background 
-let bgTop = document.querySelector('.bg-1');
-let bgDown = document.querySelector('.bg-2');
-  function ChangeBg () {
-    let today = new Date();
-    let bgHour = today.getHours();
-    let bgDayTime = getDayTime();
+// let bgTopEl = document.querySelector('.bg-1');
+// let bgDownEl = document.querySelector('.bg-2');
+//   function ChangeBg () {
+//     let today = new Date();
+//     let bgHour = today.getHours();
+//     let bgDayTime = getDayTime();
 
-    let bgTopIndex = ShuffleBgArr[bgHour];  
-    let bgDownIndex = (bgHour) => {
-      if (bgHour == 24) return ShuffleBgArr[0]
-      else return ShuffleBgArr[bgHour+1]
-    }      
+//     let bgTopIndex = ShuffleBgArr[bgHour];  
+//     let bgDownIndex = (bgHour) => {
+//       if (bgHour == 24) return ShuffleBgArr[0]
+//       else return ShuffleBgArr[bgHour+1]
+//     }      
     
-    // научить менять картинки между собой (класс .current) и при это отслеживать подгрузку картинки для мягкой смнеы картинок - onload
-    bgTop.style.backgroundImage = `url('./assets/images/${bgDayTime}/${addZero(bgTopIndex)}.jpg')`; 
-    bgDown.style.backgroundImage = `url('./assets/images/${bgDayTime}/${addZero(bgDownIndex(bgHour))}.jpg')`; 
+//     // научить менять картинки между собой (класс .current) и при это отслеживать подгрузку картинки для мягкой смнеы картинок - onload
+//     bgTopEl.style.backgroundImage = `url('./assets/images/${bgDayTime}/${addZero(bgTopIndex)}.jpg')`; 
+//     bgDownEl.style.backgroundImage = `url('./assets/images/${bgDayTime}/${addZero(bgDownIndex(bgHour))}.jpg')`; 
 
 
-    function getDayTime() {
-      if (bgHour >= 6 && bgHour < 12 ) {
-        return 'morning';
-      } else if (bgHour >= 12 && bgHour < 18) {
-        return 'day';
-      } else if (bgHour >= 18 && bgHour <= 23) {
-        return 'evening';
-      } else {
-        return 'night';
-      }
+//     function getDayTime() {
+//       if (bgHour >= 6 && bgHour < 12 ) {
+//         return 'morning';
+//       } else if (bgHour >= 12 && bgHour < 18) {
+//         return 'day';
+//       } else if (bgHour >= 18 && bgHour <= 23) {
+//         return 'evening';
+//       } else {
+//         return 'night';
+//       }
+//     }
+//   }
+
+// // Next img button
+// const NextImgBtn = document.querySelector('.img-next-btn');
+// function showNextImg() {
+  
+  //   bgDownEl.classList.toggle('current');
+  //   bgTopEl.classList.toggle('current');
+  // }
+  
+  
+let bgPrevEl = document.querySelector('.bg-prev');
+let bgNextEl = document.querySelector('.bg-next');
+
+function getBgImageUrl(bgDayTime, bgHourIndex) {
+  return `url('./assets/images/${bgDayTime}/${bgHourIndex}.jpg')`
+}
+
+function changeBg(bgNextIndex) {
+  bgPrevEl.style.backgroundImage = getBgImageUrl(bgDayTime, addZero(bgTopIndex)); 
+  bgNextEl.style.backgroundImage = getBgImageUrl(bgDayTime, addZero(bgDownIndex));
+  
+}
+function changeBgByTime () {
+  let today = new Date();
+  let bgHour = today.getHours();
+  let bgDayTime = getDayTime();
+
+  let bgTopIndex = getHourIndex(bgHour, 'top');  
+  let bgDownIndex = getHourIndex(bgHour, 'down');
+
+  function getHourIndex(bgHour, bgEl) {
+    if (bgEl == 'top') {
+      return ShuffleBgArr[bgHour];
+    }
+    else if (bgEl == 'down') {
+      if (bgHour == 23) return ShuffleBgArr[0];
+      else return ShuffleBgArr[bgHour+1]
     }
   }
+
+  function getDayTime() {
+    if (bgHour >= 6 && bgHour < 12 ) {
+      return 'morning';
+    } else if (bgHour >= 12 && bgHour < 18) {
+      return 'day';
+    } else if (bgHour >= 18 && bgHour <= 23) {
+      return 'evening';
+    } else {
+      return 'night';
+    }
+  }
+  changeBg(bgDayTime, )
+}
+
+
+
+
+
+
+
+
+
+
+
+// Next img button
+const NextImgBtn = document.querySelector('.img-next-btn');
+function showNextImg() {
+  bgDownEl.classList.toggle('current');
+  bgTopEl.classList.toggle('current');
+}  
+
 
 // Shaffle imgs array 
 let bgArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
@@ -181,6 +252,10 @@ function getWeekDay() {
 
   return days[today.getDay()];
 }
+
+
+
+NextImgBtn.addEventListener('click', showNextImg);
 
 nameElement.addEventListener('keypress', setName);
 nameElement.addEventListener('blur', setName);
