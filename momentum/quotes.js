@@ -53,6 +53,6 @@ function getNewQuote() {
     quoteElement.innerHTML = `<q>${quote}</q>`;
 }
 
-addEventListener('click', getNewQuote);
+quoteRandomBtn.addEventListener('click', getNewQuote);
 
 getNewQuote()

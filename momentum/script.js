@@ -1,11 +1,11 @@
 // DOM Elements
 const time = document.querySelector('.time'),
-  greeting = document.querySelector('.greeting'),
-  nameElement = document.querySelector('.name'),
-  focus = document.querySelector('.focus'),
-  monthHtml = document.querySelector('.month'),
-  weekdayHtml = document.querySelector('.weekday'),
-  dayHtml = document.querySelector('.day');
+greeting = document.querySelector('.greeting'),
+nameElement = document.querySelector('.name'),
+focus = document.querySelector('.focus'),
+monthHtml = document.querySelector('.month'),
+weekdayHtml = document.querySelector('.weekday'),
+dayHtml = document.querySelector('.day');
 
 // Date toggle
 let date = new Date();
@@ -13,32 +13,39 @@ let date = new Date();
 
 // Options
 const showAmPm = false;
+let currentBgDaytime = null;
+let currentBgNextHour = null;
+
+// Infinite loop to update time and backgrounds
+function updateScreen() {
+  showTime();
+  setBgGreet();
+  setTimeout(updateScreen, 1000);
+}
 
 // Show Time
 function showTime() {
   let today = new Date(),
-    hour = today.getHours(),
-    min = today.getMinutes(),
-    sec = today.getSeconds(),
-    month = getMonthName(),
-    weekDay = getWeekDay(),
-    day = today.getDate();
-
+  hour = today.getHours(),
+  min = today.getMinutes(),
+  sec = today.getSeconds(),
+  month = getMonthName(),
+  weekDay = getWeekDay(),
+  day = today.getDate();
+  
   // Set AM or PM
   const amPm = hour >= 12 ? 'PM' : 'AM';
-
+  
   // 12hr Format
   // hour = hour % 12 || 12;
-
+  
   // Output Time
   time.innerHTML = `${addZero(hour)}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)} 
-                    ${showAmPm ? amPm : ''}`;
-
+  ${showAmPm ? amPm : ''}`;
+  
   monthHtml.innerHTML = `${month}`;
   weekdayHtml.innerHTML = `${weekDay}`;
   dayHtml.innerHTML = `${day}`;
-
-  setTimeout(showTime, 1000);
 }
 
 // Add Zeros
@@ -49,24 +56,35 @@ function addZero(n) {
 // Set Background and Greeting
 function setBgGreet() {
   let today = new Date(),
-    hour = today.getHours();
-
-  if (hour >= 6 && hour < 12) {
-    // Morning
-    greeting.textContent = 'Доброе утро, ';
-  } else if (hour >= 12 && hour < 18) {
-    // Day
-    greeting.textContent = 'Добрый день, ';
-  } else if (hour >= 18 && hour <= 23) {
-    // Evening
-    greeting.textContent = 'Добрый вечер, ';
-  } else {
-    // Night
-    greeting.textContent = 'Прекрасная ночь, ';
+  hour = today.getHours(),
+  minutes = today.getMinutes(),
+  seconds = today.getSeconds();
+  if (!greeting.textContent) {
+    if (hour >= 6 && hour < 12) {
+      // Morning
+      greeting.textContent = 'Доброе утро, ';
+    } else if (hour >= 12 && hour < 18) {
+      // Day
+      greeting.textContent = 'Добрый день, ';
+    } else if (hour >= 18 && hour <= 23) {
+      // Evening
+      greeting.textContent = 'Добрый вечер, ';
+    } else {
+      // Night
+      greeting.textContent = 'Прекрасная ночь, ';
+    }
+  }
+  if (currentBgNextHour == null && currentBgNextHour == null) {
+    currentBgDaytime = getDayTime(hour);
+    currentBgNextHour = getHourImage(hour, "next");
+    changeBg(currentBgDaytime, getHourImage(hour, "next"))
+  }
+  if (minutes === 0 && seconds === 0) {
+    currentBgDaytime = getDayTime(hour);
+    currentBgNextHour = getHourImage(hour, "next");
+    changeBg(currentBgDaytime, getHourImage(hour, "next"))
   }
 }
-
-let globalBgDaytime, globalBgNextHour;
 
 function getCurrentBgElements() {
   bgCurrentEl = document.querySelector('.bg.current');
@@ -75,49 +93,29 @@ function getCurrentBgElements() {
 }
 
 function getBgImageUrl(bgDayTime, bgHourIndex) {
-  return `url('./assets/images/${bgDayTime}/${bgHourIndex}.jpg')`
+  return `./assets/images/${bgDayTime}/${bgHourIndex}.jpg`
 }
 
-function changeBg(bgDayTime, bgNextName, bgCurrentName) {
-  getCurrentBgElements()
-  if (bgCurrentName) {
-    bgCurrentEl.style.backgroundImage = getBgImageUrl(bgDayTime, addZero(bgCurrentName));
-    bgNextEl.style.backgroundImage = getBgImageUrl(bgDayTime, addZero(bgNextName));
-  } else {
+function changeBg(bgDayTime, bgNextName) {
+  getCurrentBgElements();
+  const img = document.createElement('img');
+  const imgPath = getBgImageUrl(bgDayTime, addZero(bgNextName));
+  img.src = imgPath;
+  img.onload = () => {
+    bgNextEl.style.backgroundImage = `url(${imgPath})`;
     bgNextEl.classList.toggle('current');
     bgCurrentEl.classList.toggle('current');
-    setTimeout(function () {
-      bgCurrentEl.style.backgroundImage = getBgImageUrl(bgDayTime, addZero(bgNextName));
-    }, 1000);
-  }
+  };
 }
 
-function changeBgByTime(initial = false) {
-  let today = new Date();
-  let bgHour = today.getHours();
-  let bgDayTime = getDayTime(bgHour);
-  let bgNextImageName = getHourImage(bgHour, 'next');
-
-  globalBgDaytime = bgDayTime;
-  globalBgNextHour = bgHour != 23 ? bgHour + 1 : 0
-
-  function getHourImage(bgHour, bgEl) {
-    if (bgEl == 'current') {
-      return ShuffleBgArr[bgHour];
-    }
-    else if (bgEl == 'next') {
-      if (bgHour == 23) return ShuffleBgArr[0];
-      else return ShuffleBgArr[bgHour + 1]
-    }
+function getHourImage(bgHour, bgEl) {
+  if (bgEl == 'current') {
+    return ShuffleBgArr[bgHour];
   }
-  if (initial) changeBg(bgDayTime, bgNextImageName, getHourImage(bgHour, 'current'))
-  else changeBg(bgDayTime, bgNextImageName)
-
-  function secondsTillNextHour() {
-    return 3600 - new Date().getTime() % 3600;
+  else if (bgEl == 'next') {
+    if (bgHour == 23) return ShuffleBgArr[0];
+    else return ShuffleBgArr[bgHour + 1]
   }
-  console.log(secondsTillNextHour())
-  // setTimeout(changeBgByTime, secondsTillNextHour())
 }
 
 function getDayTime(bgHour) {
@@ -135,20 +133,18 @@ function getDayTime(bgHour) {
 // Next img button
 const NextImgBtn = document.querySelector('.img-next-btn');
 function showNextImg() {
-  changeBg(globalBgDaytime, ShuffleBgArr[globalBgNextHour]);
-  globalBgNextHour = globalBgNextHour != 23 ? globalBgNextHour + 1 : 0
-  globalBgDaytime = getDayTime(globalBgNextHour)
+  changeBg(currentBgDaytime, ShuffleBgArr[currentBgNextHour]);
+  currentBgNextHour = currentBgNextHour != 23 ? currentBgNextHour + 1 : 0
+  currentBgDaytime = getDayTime(currentBgNextHour)
 }
 
-
-// Shaffle imgs array 
+// Shuffle imgs array 
 let bgArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 let arrMorning = shuffle(bgArr).slice(5, 11);   //шафлим и обрезаем массив картинок под количество часов во времени суток
 let arrDay = shuffle(bgArr).slice(5, 11);
 let arrEvening = shuffle(bgArr).slice(5, 11);
 let arrNight = shuffle(bgArr).slice(5, 11);
 
-// let ShuffleBgArr = arrMorning.concat(arrDay).concat(arrEvening).concat(arrNight);
 let ShuffleBgArr = arrNight.concat(arrMorning).concat(arrDay).concat(arrEvening);
 
 function shuffle(arr) {
@@ -161,8 +157,6 @@ function shuffle(arr) {
   }
   return arr;
 };
-
-
 
 // Get Name
 function getName() {
@@ -212,7 +206,7 @@ function setFocus(e) {
 function getMonthName() {
   let today = new Date();
   const months = ['Января', 'Февраля', 'Марта', 'Апреля', 'Майя', 'Июня',
-    'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
+  'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
   return months[today.getMonth()]
 }
 
@@ -220,12 +214,10 @@ function getMonthName() {
 function getWeekDay() {
   let today = new Date();
   let days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг',
-    'Пятница', 'Суббота'];
-
+  'Пятница', 'Суббота'];
+  
   return days[today.getDay()];
 }
-
-
 
 NextImgBtn.addEventListener('click', showNextImg);
 
@@ -235,9 +227,7 @@ focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
 
 // Run
-showTime();
-setBgGreet();
-changeBgByTime(true);
+updateScreen();
 getName();
 getFocus();
 getMonthName();

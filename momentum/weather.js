@@ -6,22 +6,33 @@ const weatherDescription = document.querySelector('.weather-description');
 const city = document.querySelector('.city');
 const error = document.querySelector('.error');
 const errorImg = document.querySelector('svg');
-const placeholder = document.querySelector('.placeholder');
+const mock = document.querySelector('.weather-mock');
 
 async function getWeather() {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=ru&appid=6ba25fbc62d3d73369c6be9caf83a8d7&units=metric`;
     const promise = await fetch(url);
-    if (promise.ok) {
-        // placeholder.classList.remove('.show');
+    // console.log('Промис: ' + promise.status);
+    if (promise.ok) {                                       //если всё ок, то покажи юзеру погоду
         var data = await promise.json();
         error.style.visibility = 'hidden';
+        mock.style.display = 'none';
         errorImg.style.display = 'none';
-    } else if (city.textContent === '') {
-        // placeholder.classList.add('show');
-        return
-    } else {
-        // placeholder.classList.remove('.show');
+        city.style.background = 'transparent';
+        city.style.border = 'none';
+    } else if (promise.status !== 404) {                     // ошибка на пустой ввод
+        mock.style.display = 'block';
+        city.style.background = 'rgba(0, 0, 0, 0.5)';
+        city.style.border = '2px solid black';
+        wind.textContent = '';
+        humidity.textContent = '';
+        weatherDescription.textContent = '';
+        temperature.textContent = '';
+        errorImg.style.display = 'none';
+        error.style.visibility = 'hidden';
+    } else {                                                    //ошибка на всякую фигню в поле city
+        city.style.background = 'rgba(0, 0, 0, 0.5)';
         error.style.visibility = 'visible';
+        mock.style.display = 'none';
         errorImg.style.display = 'block';
         wind.textContent = '';
         humidity.textContent = '';
@@ -38,10 +49,6 @@ async function getWeather() {
     weatherDescription.textContent = data.weather[0].description;
 }
 
-// try {
-//     res = await fetch(url)}
-//  catch (e) { ...} 
-
 
 // Wind name
 function getDirection(angle) {
@@ -52,7 +59,7 @@ function getDirection(angle) {
 //Get city
 function getCity() {
     if (!localStorage.getItem('city')) {
-        city.textContent = 'Москва';
+        city.textContent = '';
     } else {
         city.textContent = localStorage.getItem('city');
     }

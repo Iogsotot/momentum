@@ -29,11 +29,12 @@ body {
 .greeting,
 .time,
 h2 {
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
 }
 .date {
   cursor: default;
   opacity: 0.7;
+
 }
 
 .time {
@@ -46,6 +47,10 @@ h2 {
 }
 .date {
   font-size: 3.5rem;
+  // background: rgba(0, 0, 0, 0.4);          //del after cross-check
+  // border: 1px solid transparent;          //del after cross-check
+  // border-radius: 20px;                    //del after cross-check
+  // padding: 1rem;                          //del after cross-check
 }
 .day,
 .month {
@@ -60,7 +65,7 @@ h1,
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
 }
 
 h2,
@@ -70,52 +75,35 @@ h2,
   font-weight: 700;
   text-align: center;
   opacity: 0.9;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
 }
 .focus,
 .focus::placeholder {
   font-size: 1.5rem;
 }
 
-
 .weather {
   height: 16rem;
   margin: 1.5rem auto;
   font-family: "Quicksand", sans-serif;
   font-size: 1.4rem;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
+  // background: rgba(0, 0, 0, 0.4);      //del after cross-check
+  // border: 1px solid transparent;         //del after cross-check
+  // border-radius: 20px;                   //del after cross-check
   opacity: 0.8;
   cursor: default;
 }
+
 .weather-icon {
   font-size: 6rem;
 }
-.temperature {
-  font-size: 2.2rem;
-  opacity: 1;
-}
-// .city-name {
-//   position: relative;
-// }
+
 .city {
-  // position: absolute;
-  // top: 0;
   cursor: text;
   font-size: 2rem;
-  // height: 2rem;
   opacity: 0.9;
-  // z-index: 20;
 }
-// .placehoder {
-//   position: absolute;
-//   top: 0;
-//   height: 2rem;
-//   z-index: 1;
-// }
-// .placehoder:hover {
-//   display: none;
-// }
-
 
 .weather:hover {
   opacity: 1;
@@ -131,7 +119,7 @@ input::placeholder {
   background-color: transparent;
   // width: fit-content;
   text-align: center;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
   // margin-bottom: 0.5rem;
 }
 .name,
@@ -156,7 +144,7 @@ input::placeholder {
 
 .error {
   visibility: hidden;
-  width: 100vw;
+  width: 70vw;
   font-size: 2.5rem;
   color: red;
   font-weight: 700;
@@ -164,7 +152,7 @@ input::placeholder {
   background-color: rgba(0, 0, 0, 0.7);
   border: 1px solid transparent;
   border-radius: 0.5rem;
-  text-shadow: 2px 2px 2px black;
+  text-shadow: 2px 2px 8px black;
   opacity: 1;
   cursor: default;
 }
@@ -174,6 +162,21 @@ input::placeholder {
   width: auto;
   margin: auto;
   fill: white;
+}
+.weather-mock {
+  display: none;
+  max-height: 15.5rem;
+  padding-bottom: 0.5rem;
+  width: auto;
+  margin: auto;
+}
+.weather-mock p {
+  font-size: 2.5rem;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.weather-mock__img {
+  width: 11rem;
+  margin-top: 1rem;
 }
 
 input:focus::-webkit-input-placeholder {
@@ -206,7 +209,17 @@ input:focus:-ms-input-placeholder {
   background-size: cover;
   box-sizing: border-box;
   transition: opacity 0.8s ease-in;
+  // z-index: 0;
 }
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  // background: rgba(0, 0, 0, 0.25);
+  background: radial-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.05));
+  z-index: 1;
+}
+
 .background-block .bg.current{
   opacity: 1;
 }
@@ -218,14 +231,16 @@ input:focus:-ms-input-placeholder {
   transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  z-index: -2;
+  z-index: -1;
 }
 
 .quote-block {
   display: flex;
   flex-direction: column-reverse;
   justify-content: space-between;
-  // margin: 0 auto;
+  // background: rgba(0, 0, 0, 0.4);    //del after cross-check
+  // border: 1px solid transparent;       //del after cross-check
+  // border-radius: 20px;                 //del after cross-check
 }
 .quote {
   display: flex;
@@ -236,7 +251,7 @@ input:focus:-ms-input-placeholder {
   font-style: italic;
   vertical-align: bottom;
   color:  #eeeeee;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
   opacity: 0.9;
   margin: 1rem auto 1rem;
 }
@@ -244,13 +259,16 @@ input:focus:-ms-input-placeholder {
 .quote-refresh {
   width: 3rem;
   height: 3rem;
-  background-color: #fff;
-  border: 1px solid transparent;
-  border-radius: 50%;
+  // background-color: #fff;
+  // border: 1px solid transparent;
+  // border-radius: 50%;
   flex-shrink: 0;
   margin: 0 auto;
   opacity: 0.7;
   cursor: pointer;
+}
+.quote-refresh svg {
+  fill: white;
 }
 
 .quote:hover, .quote-refresh:hover, .quote:hover .quote-refresh, .quote-block:hover .quote-refresh {
@@ -262,13 +280,19 @@ input:focus:-ms-input-placeholder {
   transition: transform 400ms linear;
 }
 
+q {
+  background: rgba(0, 0, 0, 0.4);
+  border: 0px solid transparent;
+  border-radius: 10px;
+ }
+
 .img-next-btn {
   position: absolute;
-  top: 1rem;
+  top: 0.7rem;
   right: 1rem;
   width: 3rem;
   height: 3rem;
-  text-shadow: white;
+  // text-shadow: white;
   cursor: pointer;
 }
 
@@ -299,6 +323,9 @@ input:focus:-ms-input-placeholder {
   }
   .error {
     font-size: 2rem;
+  }
+  .weather-mock p{
+    font-size: 1.8rem;
   }
   .date {
     font-size: 3.2rem;
@@ -332,6 +359,12 @@ input:focus:-ms-input-placeholder {
   .error {
     width: auto;
     padding: 0 1rem;
+  }
+  .weather-mock {
+    max-width:  26rem;
+  }
+  .weather-mock p {
+    font-size: 1.8rem;
   }
   .weather-block {
     align-self: flex-end;

@@ -39,7 +39,7 @@ body {
 .greeting,
 .time,
 h2 {
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
 }
 
 .date {
@@ -72,7 +72,7 @@ h1,
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
 }
 
 h1,
@@ -82,7 +82,7 @@ h1,
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
 }
 
 h1,
@@ -92,7 +92,7 @@ h1,
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
 }
 
 h1,
@@ -102,7 +102,7 @@ h1,
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
 }
 
 h2,
@@ -112,7 +112,7 @@ h2,
   font-weight: 700;
   text-align: center;
   opacity: 0.9;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
 }
 
 h2,
@@ -122,7 +122,7 @@ h2,
   font-weight: 700;
   text-align: center;
   opacity: 0.9;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
 }
 
 h2,
@@ -132,7 +132,7 @@ h2,
   font-weight: 700;
   text-align: center;
   opacity: 0.9;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
 }
 
 h2,
@@ -142,7 +142,7 @@ h2,
   font-weight: 700;
   text-align: center;
   opacity: 0.9;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
 }
 
 .focus,
@@ -170,18 +170,13 @@ h2,
   margin: 1.5rem auto;
   font-family: "Quicksand", sans-serif;
   font-size: 1.4rem;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
   opacity: 0.8;
   cursor: default;
 }
 
 .weather-icon {
   font-size: 6rem;
-}
-
-.temperature {
-  font-size: 2.2rem;
-  opacity: 1;
 }
 
 .city {
@@ -202,7 +197,7 @@ input::-webkit-input-placeholder {
   border: 1px solid transparent;
   background-color: transparent;
   text-align: center;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
 }
 
 .focus,
@@ -213,7 +208,7 @@ input:-ms-input-placeholder {
   border: 1px solid transparent;
   background-color: transparent;
   text-align: center;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
 }
 
 .focus,
@@ -224,7 +219,7 @@ input::-ms-input-placeholder {
   border: 1px solid transparent;
   background-color: transparent;
   text-align: center;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
 }
 
 .focus,
@@ -235,7 +230,7 @@ input::placeholder {
   border: 1px solid transparent;
   background-color: transparent;
   text-align: center;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
 }
 
 .name,
@@ -279,14 +274,14 @@ input::placeholder {
 
 .error {
   visibility: hidden;
-  width: 100vw;
+  width: 70vw;
   font-size: 2.5rem;
   color: red;
   font-weight: 700;
   background-color: rgba(0, 0, 0, 0.7);
   border: 1px solid transparent;
   border-radius: 0.5rem;
-  text-shadow: 2px 2px 2px black;
+  text-shadow: 2px 2px 8px black;
   opacity: 1;
   cursor: default;
 }
@@ -297,6 +292,24 @@ input::placeholder {
   width: auto;
   margin: auto;
   fill: white;
+}
+
+.weather-mock {
+  display: none;
+  max-height: 15.5rem;
+  padding-bottom: 0.5rem;
+  width: auto;
+  margin: auto;
+}
+
+.weather-mock p {
+  font-size: 2.5rem;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.weather-mock__img {
+  width: 11rem;
+  margin-top: 1rem;
 }
 
 input:focus::-webkit-input-placeholder {
@@ -336,6 +349,14 @@ input:focus:-ms-input-placeholder {
   transition: opacity 0.8s ease-in;
 }
 
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.05));
+  z-index: 1;
+}
+
 .background-block .bg.current {
   opacity: 1;
 }
@@ -348,7 +369,7 @@ input:focus:-ms-input-placeholder {
           transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  z-index: -2;
+  z-index: -1;
 }
 
 .quote-block {
@@ -380,7 +401,7 @@ input:focus:-ms-input-placeholder {
   font-style: italic;
   vertical-align: bottom;
   color: #eeeeee;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 2px 2px 8px black;
   opacity: 0.9;
   margin: 1rem auto 1rem;
 }
@@ -388,14 +409,15 @@ input:focus:-ms-input-placeholder {
 .quote-refresh {
   width: 3rem;
   height: 3rem;
-  background-color: #fff;
-  border: 1px solid transparent;
-  border-radius: 50%;
   -ms-flex-negative: 0;
       flex-shrink: 0;
   margin: 0 auto;
   opacity: 0.7;
   cursor: pointer;
+}
+
+.quote-refresh svg {
+  fill: white;
 }
 
 .quote:hover, .quote-refresh:hover, .quote:hover .quote-refresh, .quote-block:hover .quote-refresh {
@@ -411,13 +433,18 @@ input:focus:-ms-input-placeholder {
   transition: transform 400ms linear, -webkit-transform 400ms linear;
 }
 
+q {
+  background: rgba(0, 0, 0, 0.4);
+  border: 0px solid transparent;
+  border-radius: 10px;
+}
+
 .img-next-btn {
   position: absolute;
-  top: 1rem;
+  top: 0.7rem;
   right: 1rem;
   width: 3rem;
   height: 3rem;
-  text-shadow: white;
   cursor: pointer;
 }
 
@@ -461,6 +488,9 @@ input:focus:-ms-input-placeholder {
   }
   .error {
     font-size: 2rem;
+  }
+  .weather-mock p {
+    font-size: 1.8rem;
   }
   .date {
     font-size: 3.2rem;
@@ -506,6 +536,12 @@ input:focus:-ms-input-placeholder {
   .error {
     width: auto;
     padding: 0 1rem;
+  }
+  .weather-mock {
+    max-width: 26rem;
+  }
+  .weather-mock p {
+    font-size: 1.8rem;
   }
   .weather-block {
     -ms-flex-item-align: end;
