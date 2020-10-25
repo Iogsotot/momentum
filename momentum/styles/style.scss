@@ -39,8 +39,12 @@ h2 {
 }
 
 .time {
+  display: grid;
+  grid-template-columns: 9rem 2rem 9rem 2rem 9rem;
+  text-align: center;
   cursor: default;
   font-size: 6rem;
+  margin: 0 auto;
 }
 
 .date:hover {
@@ -333,6 +337,8 @@ q {
   }
   .time {
     font-size: 7rem;
+    grid-template-columns: 10rem 2rem 10rem 2rem 10rem;
+
   }
   h1, .name, .name::placeholder {
     margin: 1rem 0 1rem;
@@ -375,6 +381,7 @@ q {
   }
   .time {
     font-size: 8rem;
+    grid-template-columns: 10rem 2rem 10rem 2rem 10rem;
   }
   .img-next-btn {
     top: auto;
@@ -398,5 +405,6 @@ q {
   }
   .time {
     font-size: 9rem;
+    grid-template-columns: 12rem 2rem 12rem 2rem 12rem;
   }
 }
