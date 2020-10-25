@@ -19,7 +19,15 @@
   <div class="weather-block">
     <div class="error">ошибка в имени города</div>
     <div class="weather">
-        <div class="city" contenteditable="true" spellcheck="false"></div>
+        <!-- <div class="city" contenteditable="true" spellcheck="false"></div> -->
+        <input 
+          class="city" 
+          type="text" 
+          placeholder="[твой город]"
+          maxlength="20"
+          size="20"
+          spellcheck="false"
+        >
         <div class="weather-mock">
           <p>
             введите название вашего города в поле выше, чтобы увидеть погоду

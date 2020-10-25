@@ -9,7 +9,7 @@ const errorImg = document.querySelector('svg');
 const mock = document.querySelector('.weather-mock');
 
 async function getWeather() {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=ru&appid=6ba25fbc62d3d73369c6be9caf83a8d7&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=ru&appid=6ba25fbc62d3d73369c6be9caf83a8d7&units=metric`;
     const promise = await fetch(url);
     // console.log('Промис: ' + promise.status);
     if (promise.ok) {                                       //если всё ок, то покажи юзеру погоду
@@ -39,7 +39,7 @@ async function getWeather() {
         weatherDescription.textContent = '';
         temperature.textContent = '';
     }
-    
+
 
     weatherIcon.className = 'weather-icon owf';
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
@@ -59,27 +59,44 @@ function getDirection(angle) {
 //Get city
 function getCity() {
     if (!localStorage.getItem('city')) {
-        city.textContent = '';
+        city.value = '';
     } else {
-        city.textContent = localStorage.getItem('city');
+        city.value = localStorage.getItem('city');
     }
+}
+
+// Check for empty string
+function isBlank(str) {
+    return (!str || /^\s*$/.test(str));
 }
 
 // Set city
 function setCity(event) {
     if (event.type === 'keypress') {
         // Make sure enter is pressed
-        if (event.which == 13 || event.keyCode == 13) { 
-            localStorage.setItem('city', event.target.innerText);
+        if (event.which == 13 || event.keyCode == 13) {
+            // console.log(event.target.value)
+            if (!isBlank(event.target.value)) {
+                localStorage.setItem('city', event.target.value);
+                getWeather();
+                city.blur();
+            } else {
+                getCity()
+                city.blur();
+            }
+        }
+    } else {
+        if (!isBlank(event.target.value)) {
+            localStorage.setItem('city', event.target.value);
             getWeather();
-            city.blur();
         } else {
-            localStorage.setItem('city', event.target.innerText);
+            getCity()
         }
     }
 }
 
 document.addEventListener('DOMContentLoaded', getWeather);
 city.addEventListener('keypress', setCity);
+city.addEventListener('blur', setCity);
 
 getCity();

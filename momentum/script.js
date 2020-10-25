@@ -1,11 +1,11 @@
 // DOM Elements
 const time = document.querySelector('.time'),
-greeting = document.querySelector('.greeting'),
-nameElement = document.querySelector('.name'),
-focus = document.querySelector('.focus'),
-monthHtml = document.querySelector('.month'),
-weekdayHtml = document.querySelector('.weekday'),
-dayHtml = document.querySelector('.day');
+  greeting = document.querySelector('.greeting'),
+  nameElement = document.querySelector('.name'),
+  focus = document.querySelector('.focus'),
+  monthHtml = document.querySelector('.month'),
+  weekdayHtml = document.querySelector('.weekday'),
+  dayHtml = document.querySelector('.day');
 
 // Date toggle
 let date = new Date();
@@ -26,23 +26,23 @@ function updateScreen() {
 // Show Time
 function showTime() {
   let today = new Date(),
-  hour = today.getHours(),
-  min = today.getMinutes(),
-  sec = today.getSeconds(),
-  month = getMonthName(),
-  weekDay = getWeekDay(),
-  day = today.getDate();
-  
+    hour = today.getHours(),
+    min = today.getMinutes(),
+    sec = today.getSeconds(),
+    month = getMonthName(),
+    weekDay = getWeekDay(),
+    day = today.getDate();
+
   // Set AM or PM
   const amPm = hour >= 12 ? 'PM' : 'AM';
-  
+
   // 12hr Format
   // hour = hour % 12 || 12;
-  
+
   // Output Time
   time.innerHTML = `${addZero(hour)}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)} 
   ${showAmPm ? amPm : ''}`;
-  
+
   monthHtml.innerHTML = `${month}`;
   weekdayHtml.innerHTML = `${weekDay}`;
   dayHtml.innerHTML = `${day}`;
@@ -56,9 +56,9 @@ function addZero(n) {
 // Set Background and Greeting
 function setBgGreet() {
   let today = new Date(),
-  hour = today.getHours(),
-  minutes = today.getMinutes(),
-  seconds = today.getSeconds();
+    hour = today.getHours(),
+    minutes = today.getMinutes(),
+    seconds = today.getSeconds();
   if (!greeting.textContent) {
     if (hour >= 6 && hour < 12) {
       // Morning
@@ -158,6 +158,11 @@ function shuffle(arr) {
   return arr;
 };
 
+// Check for empty string
+function isBlank(str) {
+  return (!str || /^\s*$/.test(str));
+}
+
 // Get Name
 function getName() {
   if (localStorage.getItem('name') === null) {
@@ -168,15 +173,25 @@ function getName() {
 }
 
 // Set Name
-function setName(e) {
-  if (e.type === 'keypress') {
+function setName(event) {
+  console.log(event.target.value)
+  if (event.type === 'keypress') {
     // Make sure enter is pressed
-    if (e.which == 13 || e.keyCode == 13) {            // на всякий случай страхуем вторым условием - e.keyCode
-      localStorage.setItem('name', e.target.value);
-      nameElement.blur();
+    if (event.which == 13 || event.keyCode == 13) {            // на всякий случай страхуем вторым условием - event.keyCode
+      if (!isBlank(event.target.value)) {
+        localStorage.setItem('name', event.target.value);
+        nameElement.blur();
+      } else {
+        getName();
+        nameElement.blur();
+      }
     }
   } else {
-    localStorage.setItem('name', e.target.value);
+    if (!isBlank(event.target.value)) {
+      localStorage.setItem('name', event.target.value);
+    } else {
+      getName()
+    }
   }
 }
 
@@ -190,15 +205,24 @@ function getFocus() {
 }
 
 // Set Focus
-function setFocus(e) {
-  if (e.type === 'keypress') {
+function setFocus(event) {
+  if (event.type === 'keypress') {
     // Make sure enter is pressed
-    if (e.which == 13 || e.keyCode == 13) {
-      localStorage.setItem('focus', e.target.value);
-      focus.blur();
+    if (event.which == 13 || event.keyCode == 13) {
+      if (!isBlank(event.target.value)) {
+        localStorage.setItem('focus', event.target.value);
+        focus.blur();
+      } else {
+        getFocus();
+        focus.blur();
+      }
     }
   } else {
-    localStorage.setItem('focus', e.target.value);
+    if (!isBlank(event.target.value)) {
+      localStorage.setItem('focus', event.target.value);
+    } else {
+      getFocus()
+    }
   }
 }
 
@@ -206,7 +230,7 @@ function setFocus(e) {
 function getMonthName() {
   let today = new Date();
   const months = ['Января', 'Февраля', 'Марта', 'Апреля', 'Майя', 'Июня',
-  'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
+    'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
   return months[today.getMonth()]
 }
 
@@ -214,8 +238,8 @@ function getMonthName() {
 function getWeekDay() {
   let today = new Date();
   let days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг',
-  'Пятница', 'Суббота'];
-  
+    'Пятница', 'Суббота'];
+
   return days[today.getDay()];
 }
 
