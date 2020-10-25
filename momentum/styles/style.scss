@@ -104,10 +104,18 @@ h2,
   font-size: 6rem;
 }
 
+input {
+  font-family: "Quicksand", sans-serif;
+}
+
 .city {
-  cursor: text;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  color: white;
   font-size: 2rem;
   opacity: 0.9;
+  cursor: text;
 }
 
 .weather:hover {
@@ -117,6 +125,7 @@ h2,
 .focus,
 .name,
 input::placeholder {
+  font-family: "Quicksand", sans-serif;
   display: inline;
   // width: 0;
   color: white;
